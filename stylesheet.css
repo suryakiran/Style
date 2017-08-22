@@ -1,0 +1,170 @@
+/* QCheckBox */
+QCheckBox::indicator{
+    width: 15px;
+    height: 15px;
+}
+
+/* Item Views */
+QAbstractItemView {
+    outline: none;
+    background-color: @bg-medium@;
+}
+
+QAbstractItemView::item:selected{
+    background: qlineargradient(@top-to-bottom@, @gradient@);
+    color: @text-for-selection@;
+}
+
+QTableView {
+    gridline-color: @pal-dark@;
+}
+
+QTableView QTableCornerButton::section {
+    background: qlineargradient(@top-to-bottom@, @bg-gradient@);
+}
+
+/* QHeaderView */
+QHeaderView::section{
+    background: qlineargradient(@top-to-bottom@, @bg-gradient@);
+    color: @text-color-for-bg@;
+    font-weight: bold;
+    border-style: none;
+    border-bottom: 1px solid @bg-dark@;
+    border-right: 1px solid @bg-dark@;
+    border-top: 1px solid @bg-dark@;
+    border-left: 1px solid @bg-dark@;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* QComboBox */
+QComboBox {
+    border: 1px solid @bg-dark@;
+    background-color: @bg-medium@;
+    color: @text-color-for-bg@;
+    border-radius: 4px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QComboBox:on {
+    padding-left: 5px;
+}
+
+QComboBox QAbstractItemView::item:selected{
+    background: qlineargradient(@top-to-bottom@, @gradient@);
+    color: @text-for-selection@;
+}
+
+/* QMenu */
+QMenu::item:selected {
+    background: qlineargradient(@top-to-bottom@, @gradient@);
+}
+
+QMenu::item {
+    background-color: transparent;
+}
+
+/* QMenuBar */
+QMenuBar {
+    background-color: qlineargradient(@top-to-bottom@, @bg-gradient@);
+    color: @text-color-for-bg@;
+}
+
+/* QMainWindow */
+QMainWindow {
+    background: @bg-light@;
+    color: @text-color-for-bg@;
+}
+
+/* QProgressBar */
+
+QProgressBar {
+    border: 2px solid @pal-dark@;
+    border-radius: 5px;
+    text-align: right;
+    margin-right: 30px;
+    height: 15px;
+    color: @text-color-for-bg@;
+}
+
+QProgressBar::chunk {
+    background: @pal-light@;
+    width: 20px;
+}
+
+/* QPushButton */
+QPushButton {
+    border: 1px solid @bg-dark@;
+    border-radius: 6px;
+    min-width: 80px;
+    color: @text-for-selection@;
+    min-height: 20px;
+    outline: none;
+    background: qlineargradient(@top-to-bottom@, @gradient-lighter@);
+}
+
+QPushButton:disabled{
+    background: @bg-dark@;
+    border-color: @bg-dark@;
+    color: #dddddd;
+}
+
+QPushButton:focus{
+    border: 2px solid @pal-dark@;
+}
+
+QPushButton:pressed{
+    background: qlineargradient(@bottom-to-top@, @gradient-lighter@);
+}
+
+/* QLineEdit */
+QLineEdit {
+    padding-left: 5px;
+    padding-right: 5px;
+    selection-background-color: @pal-medium@;
+    selection-color: @text-for-selection@;
+}
+
+QLineEdit:focus{
+    border: 2px solid @pal-dark@;
+    border-radius: 6px;
+}
+
+QLineEdit[readOnly="true"] {
+    background-color: @bg-light@;
+    color: @text-color-for-bg@;
+}
+
+/* Spin Boxes */
+QAbstractSpinBox {
+    min-width: 6em;
+    padding-left: 5px;
+    padding-right: 5px;
+    selection-color: @text-for-selection@;
+    selection-background-color: @pal-medium@;
+}
+
+QAbstractSpinBox:focus {
+    border: 2px solid @pal-dark@;
+}
+
+QWidget#qt_calendar_navigationbar {
+    background: qlineargradient(@top-to-bottom@, @gradient@);
+}
+
+QWidget#qt_calendar_monthbutton, QWidget#qt_calendar_yearbutton{
+    color: @text-for-selection@;
+}
+
+QWidget#qt_calendar_prevmonth, QWidget#qt_calendar_nextmonth{
+    color: #ffffff;
+}
+
+QWidget#qt_calendar_calendarview{
+    selection-background-color: @pal-medium@;
+}
+
+/* Local Variables: */
+/* eval: (skg/mode t) */
+/* End: */
