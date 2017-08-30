@@ -1,8 +1,60 @@
+QWidget {
+    background: @bg-medium@;
+    color: @text-color@;
+}
+
+QCheckBox {
+    outline: none;
+}
+
 /* QCheckBox */
 QCheckBox::indicator{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid @bg-dark@;
 }
+
+QCheckBox::indicator:indeterminate{
+    background-color: qlineargradient(spread:pad, x1:0.3, y1:0.3, x2:0.7, y2:0.7, stop:0 @bg-medium@, stop: 0.5 @pal-light@, stop: 1 @bg-medium@);
+}
+
+QCheckBox::indicator:checked{
+    background-color: qlineargradient(@top-to-bottom@, @gradient@);
+}
+
+QRadioButton {
+    background-color: @bg-medium@;
+    color: white;
+    outline: none;
+}
+
+QRadioButton::indicator {
+    width:                  10px;
+    height:                 10px;
+    border-radius:          7px;
+    border: 2px solid @bg-dark@;
+}
+
+QRadioButton::indicator:checked {
+    background: qradialgradient(spread: pad, cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5, stop: 0 @pal-light@, stop: 0.45 @pal-medium@, stop: 0.5 @pal-dark@); 
+}
+
+QRadioButton::indicator:unchecked {
+}
+/* /\* QRadioButton *\/ */
+/* QRadioButton::indicator{ */
+/*     width: 12px; */
+/*     height: 12px; */
+/*     border: 2px solid @bg-dark@; */
+/*     border-radius: 8px; */
+/* } */
+
+/* QRadioButton::indicator:checked{ */
+/*     width: 12px; */
+/*     height: 12px; */
+/*     border: 2px solid @bg-dark@; */
+/*     border-radius: 8px; */
+/* } */
 
 /* Item Views */
 QAbstractItemView {
@@ -10,9 +62,14 @@ QAbstractItemView {
     background-color: @bg-medium@;
 }
 
+QAbstractItemView::item {
+    min-height: 20px;
+    outline: none;
+}
+
 QAbstractItemView::item:selected{
     background: qlineargradient(@top-to-bottom@, @gradient@);
-    color: @text-for-selection@;
+    color: @selected-text-color@;
 }
 
 QTableView {
@@ -26,7 +83,7 @@ QTableView QTableCornerButton::section {
 /* QHeaderView */
 QHeaderView::section{
     background: qlineargradient(@top-to-bottom@, @bg-gradient@);
-    color: @text-color-for-bg@;
+    color: @text-color@;
     font-weight: bold;
     border-style: none;
     border-bottom: 1px solid @bg-dark@;
@@ -41,7 +98,7 @@ QHeaderView::section{
 QComboBox {
     border: 1px solid @bg-dark@;
     background-color: @bg-medium@;
-    color: @text-color-for-bg@;
+    color: @text-color@;
     border-radius: 4px;
     padding: 1px 18px 1px 3px;
     min-width: 6em;
@@ -53,7 +110,7 @@ QComboBox:on {
 
 QComboBox QAbstractItemView::item:selected{
     background: qlineargradient(@top-to-bottom@, @gradient@);
-    color: @text-for-selection@;
+    color: @selected-text-color@;
 }
 
 /* QMenu */
@@ -68,13 +125,13 @@ QMenu::item {
 /* QMenuBar */
 QMenuBar {
     background-color: qlineargradient(@top-to-bottom@, @bg-gradient@);
-    color: @text-color-for-bg@;
+    color: @text-color@;
 }
 
 /* QMainWindow */
 QMainWindow {
     background: @bg-light@;
-    color: @text-color-for-bg@;
+    color: @text-color@;
 }
 
 /* QProgressBar */
@@ -85,7 +142,7 @@ QProgressBar {
     text-align: right;
     margin-right: 30px;
     height: 15px;
-    color: @text-color-for-bg@;
+    color: @text-color@;
 }
 
 QProgressBar::chunk {
@@ -98,7 +155,7 @@ QPushButton {
     border: 1px solid @bg-dark@;
     border-radius: 6px;
     min-width: 80px;
-    color: @text-for-selection@;
+    color: @selected-text-color@;
     min-height: 20px;
     outline: none;
     background: qlineargradient(@top-to-bottom@, @gradient-lighter@);
@@ -118,12 +175,25 @@ QPushButton:pressed{
     background: qlineargradient(@bottom-to-top@, @gradient-lighter@);
 }
 
+/* QGroupBox */
+QGroupBox {
+    border: 1px solid @bg-dark@;
+    border-radius: 10px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title{
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0px 2px 0px 2px;
+}
+
 /* QLineEdit */
 QLineEdit {
     padding-left: 5px;
     padding-right: 5px;
     selection-background-color: @pal-medium@;
-    selection-color: @text-for-selection@;
+    selection-color: @selected-text-color@;
 }
 
 QLineEdit:focus{
@@ -133,7 +203,7 @@ QLineEdit:focus{
 
 QLineEdit[readOnly="true"] {
     background-color: @bg-light@;
-    color: @text-color-for-bg@;
+    color: @text-color@;
 }
 
 /* Spin Boxes */
@@ -141,7 +211,7 @@ QAbstractSpinBox {
     min-width: 6em;
     padding-left: 5px;
     padding-right: 5px;
-    selection-color: @text-for-selection@;
+    selection-color: @selected-text-color@;
     selection-background-color: @pal-medium@;
 }
 
@@ -154,7 +224,7 @@ QWidget#qt_calendar_navigationbar {
 }
 
 QWidget#qt_calendar_monthbutton, QWidget#qt_calendar_yearbutton{
-    color: @text-for-selection@;
+    color: @selected-text-color@;
 }
 
 QWidget#qt_calendar_prevmonth, QWidget#qt_calendar_nextmonth{

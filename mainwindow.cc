@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <QtWidgets/QStyledItemDelegate>
+#include <QtGui/QStandardItemModel>
+#include <QtGui/QStandardItem>
 #include <cout.h>
 
 MainWindow::MainWindow (QWidget* parent)
@@ -18,6 +20,26 @@ MainWindow::MainWindow (QWidget* parent)
     initPalette();
     populateMenu();
     readStyleSheet();
+
+    initTreeView();
+}
+
+void
+MainWindow::initTreeView()
+{
+    model = new QStandardItemModel(this);
+
+    for (int row = 0; row < 4; ++row) {
+        QList<QStandardItem*> items;
+        for (int col = 0; col < 2; ++col) {
+            QString text ("Item %1-%2");
+            text = text.arg(row+1).arg(col+1);
+            items << new QStandardItem(text);
+        }
+        model->appendRow(items);
+    }
+
+    treeView->setModel(model);
 }
 
 void
@@ -70,8 +92,8 @@ MainWindow::substituteColors (const std::string& line)
         .replace("@bg-light@", bg.light.name())
         .replace("@bg-dark@", bg.dark.name())
         .replace("@bg-medium@", bg.medium.name())
-        .replace("@text-for-selection@", pal.text.name())
-        .replace("@text-color-for-bg@", bg.text.name())
+        .replace("@selected-text-color@", pal.text.name())
+        .replace("@text-color@", bg.text.name())
         .replace("@pal-dark@", pal.dark.name())
         .replace("@pal-medium@", pal.medium.name())
         .replace("@pal-light@", pal.light.name())

@@ -3,6 +3,8 @@
 #include <ui_mainwindow.h>
 #include <palette.h>
 
+class QStandardItemModel;
+
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
 public:
@@ -22,12 +24,14 @@ private:
     QString substituteColors(const std::string& line);
     void changeTheme();
     void changeBackground();
+    void initTreeView();
 
 private:
+    QStandardItemModel* model;
     QMenu* themeMenu;
     PaletteMap palette;
     PaletteMap backgrounds;
-    std::string currentTheme {"Brave"};
-    std::string currentBackground {"Light"};
+    std::string currentTheme {"Wise"};
+    std::string currentBackground {"Dark"};
     std::vector <std::string> styleSheet;
 };
