@@ -27,7 +27,7 @@ MainWindow::MainWindow (QWidget* parent)
 void
 MainWindow::initTreeView()
 {
-    model = new QStandardItemModel(this);
+    model = new QStandardItemModel(treeView);
 
     for (int row = 0; row < 4; ++row) {
         QList<QStandardItem*> items;
@@ -39,6 +39,10 @@ MainWindow::initTreeView()
         model->appendRow(items);
     }
 
+    model->setHorizontalHeaderItem(0, new QStandardItem("Column 1"));
+    model->setHorizontalHeaderItem(1, new QStandardItem("Column 2"));
+
+    treeView->setRootIsDecorated(false);
     treeView->setModel(model);
 }
 
